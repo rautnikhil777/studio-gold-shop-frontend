@@ -1,0 +1,39 @@
+body {
+  margin: 0;
+  font-family: sans-serif;
+}
+/* footer */
+.footer-fixed {
+  position: fixed;
+  bottom: 0;
+  width: 100%;
+  background-color: #f8f9fa;
+  border-top: 1px solid #dee2e6;
+  z-index: 1030;
+  padding-top: 0.25rem;
+  padding-bottom: 0.25rem;
+}
+
+.footer-btn-group {
+  display: flex;
+  justify-content: center;  /* अब दोनों बटन हमेशा center में दिखेंगे */
+  gap: 0.5rem;
+  flex-wrap: nowrap;
+  align-items: center;
+  width: 100%;
+}
+
+.footer-btn-group a.btn {
+  font-size: 0.85rem;
+  padding: 0.34rem 0.68rem;
+  white-space: nowrap;
+  min-width: 100px;
+}
+
+@media (max-width: 576px) {
+  .footer-btn-group a.btn {
+    font-size: 0.74rem;
+    padding: 0.18rem 0.38rem;
+    min-width: 82px;
+  }
+}
