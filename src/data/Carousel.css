@@ -1,0 +1,41 @@
+/* Carousel.css */
+.carousel-container {
+  display: flex;
+  overflow-x: auto;
+  gap: 12px;
+  padding: 10px 0;
+  background: #fffbe6;
+  border-radius: 12px;
+  box-shadow: 0 2px 12px rgba(212, 175, 55, 0.10);
+}
+.slide img {
+  border: 2px solid gold;
+  transition: transform 0.3s;
+}
+.slide img:hover {
+  transform: scale(1.07);
+  box-shadow: 0 4px 8px #d4af37aa;
+}
+.carousel-container {
+  display: flex;
+  overflow-x: auto;
+  gap: 10px;
+  padding: 10px 0;
+  scroll-behavior: smooth;
+}
+
+.slide {
+  min-width: 300px;
+  flex-shrink: 0;
+  border-radius: 12px;
+  box-shadow: 0 0 8px rgba(212, 175, 55, 0.3);
+}
+
+.carousel-loading,
+.carousel-error,
+.carousel-no-images {
+  text-align: center;
+  padding: 1rem;
+  color: #666;
+  font-style: italic;
+}
