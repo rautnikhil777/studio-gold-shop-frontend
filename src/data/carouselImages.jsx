@@ -1,14 +1,38 @@
-import Blueberry_Cheesecake_Pastry2_z1bqiq from '../assets/Blueberry_Cheesecake_Pastry2_z1bqiq.jpg';
-import butterscotchCakeWn717d from '../assets/butterscotch_cake_wn717d.jpg';
-import chockletCake3A6ulea from '../assets/chocklet_cake3_a6ulea.jpg';
-import pineappleCake1Hvwtmd from '../assets/Pineapple_cake_1_hvwtmd.jpg';
-import stoberyCake10Mmbv9q from '../assets/stobery_cake10_mmbv9q.jpg';
+import imageUrlBuilder from "@sanity/image-url";
+import { useEffect, useState } from "react";
+import sanityClient from "../sanity"; // tumhara configured sanity client
+import './Carousel.css'; // optional styling
 
+const builder = imageUrlBuilder(sanityClient);
 
-export const carouselImages = [
-  { id: 11, image: butterscotchCakeWn717d },
-  { id: 15, image: chockletCake3A6ulea },
-  { id: 24, image: pineappleCake1Hvwtmd },
-  { id: 32, image: stoberyCake10Mmbv9q },
-  { id: 1, image: Blueberry_Cheesecake_Pastry2_z1bqiq }
-];
+function urlFor(source) {
+  return builder.image(source);
+}
+
+const ProductCarousel = ({ productId }) => {
+  const [product, setProduct] = useState(null);
+
+  useEffect(() => {
+    sanityClient.fetch(
+      `*[_type == "product" && _id == $id][0]{
+        name,
+        images
+      }`,
+      { id: productId }
+    ).then((data) => setProduct(data));
+  }, [productId]);
+
+  if (!product || !product.images) return <div>Loading...</div>;
+
+  return (
+    <div className="carousel-container">
+      {product.images.map((img, index) => (
+        <div className="slide" key={index}>
+          <img src={urlFor(img).url()} alt={`Slide ${index}`} />
+        </div>
+      ))}
+    </div>
+  );
+};
+
+export default ProductCarousel;
