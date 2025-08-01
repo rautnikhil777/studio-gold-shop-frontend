@@ -20,12 +20,16 @@ function App() {
         <Routes>
           {/* Home Page */}
           <Route path="/" element={<Home />} />
-          {/* Product Details (slug as :id) */}
-          <Route path="/product/:id" element={<ProductDetails />} />
+
+          {/* Product Details (slug as :slug) */}
+          <Route path="/product/:slug" element={<ProductDetails />} />
+
           {/* Contact Page */}
           <Route path="/contact" element={<Contact />} />
+
           {/* QR Code Page */}
           <Route path="/qr-code" element={<QrCodeComponent />} />
+
           {/* Offers Page */}
           <Route path="/offers" element={<Offers />} />
         </Routes>

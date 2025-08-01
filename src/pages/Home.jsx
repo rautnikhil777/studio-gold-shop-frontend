@@ -110,6 +110,7 @@ export default function Home() {
 
   const handleCarouselClick = (id) => {
     const product = allProducts.find((p) => p._id === id);
+    // Check if slug exists before navigating
     if (product?.slug?.current) {
       navigate(`/product/${product.slug.current}`);
     } else {
@@ -119,7 +120,7 @@ export default function Home() {
 
   return (
     <div className="home-container px-2 mb-5">
-      {/* 🔁 Category Slider */}
+      {/* Category Slider */}
       {allCategories.length > 0 && (
         <div className="category-slider-wrapper">
           <div className="category-slider-track">
@@ -169,7 +170,7 @@ export default function Home() {
       </div>
       {drawerOpen && <div className="sort-drawer-overlay" onClick={() => setDrawerOpen(false)} />}
 
-      {/* ✅ Carousel */}
+      {/* Carousel */}
       <div className="mb-3 d-flex justify-content-center">
         <div className="w-100 home-carousel-wrapper">
           <Carousel fade interval={2800} indicators className="mobile-carousel">

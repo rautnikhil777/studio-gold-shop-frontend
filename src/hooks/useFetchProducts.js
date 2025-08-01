@@ -3,15 +3,21 @@
 import { useEffect, useState } from "react";
 import { client } from "../sanityClient";
 
-// Query only for fields matching your schema
+// Sanity schema ke hisaab se query update karo
 const query = `*[_type == "product"]{
   _id,
   name,
   description,
   price,
-  image,
+  prices,
+  images,
   karat,
-  weight
+  weights,
+  category,
+  rating,
+  isPreOrder,
+  isFeatured,
+  slug
 }`;
 
 export function useFetchProducts() {
